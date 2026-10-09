@@ -1,0 +1,9 @@
+/* Base reset — el sistema de diseño Stitch lo maneja stitch.css */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}

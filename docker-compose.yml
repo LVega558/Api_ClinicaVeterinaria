@@ -5,13 +5,13 @@ services:
     image: postgres:15
     container_name: vet_clinic_postgres
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_USER: ${DB_USER:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-adminpassword}
       # The default database
-      POSTGRES_DB: vet_clinic_gateway
+      POSTGRES_DB: ${DB_GATEWAY:-vet_clinic_gateway}
     # Using 5433 on the host because your mi-postgres container already uses 5432!
     ports:
-      - "5433:5432"
+      - "${DB_PORT:-5433}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
